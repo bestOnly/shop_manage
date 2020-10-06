@@ -4,3 +4,12 @@
   margin-left: 50%;
   transform: translate(-50%);
 }
+.el-card {
+  margin-top: 20px;
+}
+.el-table {
+  margin-top: 20px;
+}
+.cell {
+  text-align: center;
+}

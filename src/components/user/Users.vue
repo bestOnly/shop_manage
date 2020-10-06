@@ -68,6 +68,7 @@
               :enterable="false"
             >
               <el-button
+                @click="openRoleBox(row)"
                 type="warning"
                 size="small"
                 icon="el-icon-star-off"
@@ -87,7 +88,7 @@
       >
       </el-pagination>
     </el-card>
-    <!-- 模态框 -->
+    <!-- 增加用户模态框 -->
     <el-dialog
       title="增加用户"
       :visible.sync="dialogVisible"
@@ -143,6 +144,30 @@
         <el-button type="primary" @click="updateUser">确 定</el-button>
       </span>
     </el-dialog>
+    <!-- 分配权限模态框 -->
+    <el-dialog
+      title="分配权限"
+      :visible.sync="giveRightVisible"
+      width="50%">
+      <span>当前的用户： {{ userDate.username }}</span>
+       <el-divider></el-divider>
+      <span>当前的角色： {{ userDate.role_name }}</span>
+       <el-divider></el-divider>
+       <p>分配新角色：
+      <el-select v-model="selectRole" placeholder="请选择" @clear="blankRole">
+          <el-option
+            v-for="item in roleList"
+            :key="item.id"
+            :label="item.roleName"
+            :value="item.id">
+          </el-option>
+        </el-select>
+       </p>
+      <span slot="footer" class="dialog-footer">
+        <el-button @click="giveRightVisible = false">取 消</el-button>
+        <el-button type="primary" @click="saveGiveRight">确 定</el-button>
+      </span>
+    </el-dialog>
   </div>
 </template>
 
@@ -174,7 +199,14 @@ export default {
         pagenum: 1,
         pagesize: 5
       },
+      giveRightVisible: false,
       userList: [],
+      userDate: {
+        username: '',
+        role_name: ''
+      },
+      roleList: {},
+      selectRole: '',
       total: 0,
       dialogVisible: false,
       updateVisible: false,
@@ -277,6 +309,25 @@ export default {
         this.$message.info('已取消删除' + err)
       })
     },
+    async openRoleBox(row) {
+      this.userDate = row
+      this.giveRightVisible = true
+      const { data } = await this.$http.get('roles')
+      this.roleList = data.data
+    },
+    async saveGiveRight() {
+      if (!this.selectRole) {
+        return this.$message.error('请选择新角色')
+      }
+      const { data } = await this.$http.put(`users/${this.userDate.id}/role`, { rid: this.selectRole })
+      console.log(data)
+      this.getUserList()
+      this.giveRightVisible = false
+    },
+    blankRole() {
+      this.selectRole = ''
+      this.userDate = ''
+    },
     handleSizeChange(val) {
       this.userInfo.pagesize = val
       this.getUserList()
@@ -290,13 +341,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.el-card {
-  margin-top: 20px;
-}
-.el-table {
-  margin-top: 20px;
-}
-/deep/ .cell {
-  text-align: center;
-}
+// .el-card {
+//   margin-top: 20px;
+// }
+// .el-table {
+//   margin-top: 20px;
+// }
+// /deep/ .cell {
+//   text-align: center;
+// }
 </style>

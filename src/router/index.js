@@ -22,14 +22,23 @@ const routes = [
     name: 'home',
     component: Home,
     redirect: '/home/Welcome',
-    children: [{
-      path: '/home/Welcome',
-      component: Welcome
-    },
-    {
-      path: '/users',
-      component: () => import(/* chunkname */ '@/components/user/Users.vue')
-    }
+    children: [
+      {
+        path: '/home/Welcome',
+        component: Welcome
+      },
+      {
+        path: '/users',
+        component: () => import(/* chunkname */ '@/components/user/Users.vue')
+      },
+      {
+        path: '/rights',
+        component: () => import(/* chunkname */ '@/components/power/Rights.vue')
+      },
+      {
+        path: '/roles',
+        component: () => import(/* chunkname */ '@/components/power/Roles.vue')
+      }
     ]
   }
 ]
