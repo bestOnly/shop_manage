@@ -46,6 +46,10 @@ const routes = [
       {
         path: '/goods',
         component: () => import(/* chunkname */ '@/components/goods/Goods.vue')
+      },
+      {
+        path: '/params',
+        component: () => import(/* chunkname */ '@/components/goods/CateParams.vue')
       }
     ]
   }

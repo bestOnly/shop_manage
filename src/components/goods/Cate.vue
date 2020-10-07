@@ -178,6 +178,7 @@ export default {
         this.addCateForm.cat_level = 0
       }
     },
+    /* 保存分类 */
     saveCate() {
       console.log(this.addCateForm)
       this.$refs.ruleForm.validate(async valid => {
