@@ -38,6 +38,14 @@ const routes = [
       {
         path: '/roles',
         component: () => import(/* chunkname */ '@/components/power/Roles.vue')
+      },
+      {
+        path: '/categories',
+        component: () => import(/* chunkname */ '@/components/goods/Cate.vue')
+      },
+      {
+        path: '/goods',
+        component: () => import(/* chunkname */ '@/components/goods/Goods.vue')
       }
     ]
   }
