@@ -45,11 +45,15 @@ const routes = [
       },
       {
         path: '/goods',
-        component: () => import(/* chunkname */ '@/components/goods/Goods.vue')
+        component: () => import(/* chunkname */ '@/components/goods/GoodsList.vue')
       },
       {
         path: '/params',
         component: () => import(/* chunkname */ '@/components/goods/CateParams.vue')
+      },
+      {
+        path: '/goods/add',
+        component: () => import(/* chunkname */ '@/components/goods/GoodsAdd.vue')
       }
     ]
   }

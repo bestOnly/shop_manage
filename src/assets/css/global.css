@@ -13,3 +13,6 @@
 .cell {
   text-align: center;
 }
+.ql-editor{
+  min-height: 300px;
+}
