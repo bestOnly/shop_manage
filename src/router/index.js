@@ -58,6 +58,10 @@ const routes = [
       {
         path: '/orders',
         component: () => import(/* chunkname */ '@/components/order/Order.vue')
+      },
+      {
+        path: '/reports',
+        component: () => import(/* chunkname */ '@/components/reports/Reports.vue')
       }
     ]
   }

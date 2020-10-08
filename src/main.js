@@ -13,6 +13,8 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
+// ECHARTS
+import Echarts from 'echarts'
 // 时间线
 // import Timeline from '@/utils/timeline/index.js'
 // import TimelineItem from '@/utils/timeline-item/index.js'
@@ -20,6 +22,7 @@ import 'quill/dist/quill.bubble.css' // for bubble theme
 // Vue.use(Timeline)
 // Vue.use(TimelineItem)
 
+Vue.prototype.$echarts = Echarts
 Vue.use(ElementUI)
 Vue.use(VueQuillEditor)
 Vue.prototype.$http = axios
