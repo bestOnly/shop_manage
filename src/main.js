@@ -13,6 +13,12 @@ import VueQuillEditor from 'vue-quill-editor'
 import 'quill/dist/quill.core.css' // import styles
 import 'quill/dist/quill.snow.css' // for snow theme
 import 'quill/dist/quill.bubble.css' // for bubble theme
+// 时间线
+// import Timeline from '@/utils/timeline/index.js'
+// import TimelineItem from '@/utils/timeline-item/index.js'
+
+// Vue.use(Timeline)
+// Vue.use(TimelineItem)
 
 Vue.use(ElementUI)
 Vue.use(VueQuillEditor)

@@ -103,7 +103,6 @@
               :action="uploadURL"
               :on-preview="handlePreview"
               :on-remove="handleRemove"
-              :file-list="fileList"
               :headers="headerToken"
               :on-success="handleSuccess"
               list-type="picture">
@@ -162,7 +161,6 @@ export default {
       onlyTableData: [],
       // 图片上传路径
       uploadURL: 'http://127.0.0.1:8888/api/private/v1/upload',
-      fileList: [],
       headerToken: {
         authorization: session.get('token')
       },
